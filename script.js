@@ -1,72 +1,63 @@
-body{
-    margin:0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg,#ffd6e8,#d8e8ff,#ffffff);
-    background-size: 300% 300%;
-    animation: gradient 10s ease infinite;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    overflow:hidden;
-}
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const dateSection = document.getElementById("dateSection");
+const confirmBtn = document.getElementById("confirmBtn");
+const result = document.getElementById("result");
 
-@keyframes gradient{
-    0%{background-position:0% 50%;}
-    50%{background-position:100% 50%;}
-    100%{background-position:0% 50%;}
-}
+yesBtn.addEventListener("click", () => {
+    dateSection.classList.remove("hidden");
+    result.innerHTML = "🥰 Yeay! Saya gembira awak cakap ya ❤️";
+});
 
-.container{
-    background:rgba(255,255,255,0.85);
-    backdrop-filter:blur(10px);
-    padding:35px;
-    border-radius:25px;
-    text-align:center;
-    width:420px;
-    box-shadow:0 15px 35px rgba(0,0,0,.2);
-}
+noBtn.addEventListener("mouseover", () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
-h1{
-    color:#ff69b4;
-}
+    noBtn.style.position = "absolute";
+    noBtn.style.left = x + "px";
+    noBtn.style.top = y + "px";
+});
 
-button{
-    padding:12px 25px;
-    margin:10px;
-    border:none;
-    border-radius:30px;
-    font-size:16px;
-    cursor:pointer;
-    transition:.3s;
-}
+confirmBtn.addEventListener("click", () => {
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
 
-#yesBtn{
-    background:#ff8fab;
-    color:white;
-}
+    if (date === "" || time === "") {
+        alert("Pilih tarikh dan masa dulu 😊");
+        return;
+    }
 
-#yesBtn:hover{
-    transform:scale(1.08);
-}
+    result.innerHTML = `
+        <h2>🎉 Yay!!</h2>
+        <p>Terima kasih sebab sudi keluar dengan saya ❤️</p>
+        <p>📅 <strong>${date}</strong></p>
+        <p>🕒 <strong>${time}</strong></p>
+        <p>Tak sabar nak jumpa awak! 🌸🥹</p>
+    `;
 
-#noBtn{
-    background:#8ec5ff;
-    color:white;
-}
+    createHearts();
+});
 
-#noBtn:hover{
-    transform:scale(1.08);
-}
+function createHearts() {
+    for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.innerHTML = "💖";
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "100vh";
+        heart.style.fontSize = (20 + Math.random() * 20) + "px";
+        heart.style.pointerEvents = "none";
+        heart.style.transition = "transform 4s linear, opacity 4s";
 
-input{
-    padding:10px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    margin:10px;
-}
+        document.body.appendChild(heart);
 
-#confirmBtn{
-    background:#ff69b4;
-    color:white;
+        setTimeout(() => {
+            heart.style.transform = `translateY(-120vh)`;
+            heart.style.opacity = "0";
+        }, 100);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4000);
+    }
 }
