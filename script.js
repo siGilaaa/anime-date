@@ -1,83 +1,72 @@
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
-    background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+    margin:0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg,#ffd6e8,#d8e8ff,#ffffff);
+    background-size: 300% 300%;
+    animation: gradient 10s ease infinite;
     display:flex;
     justify-content:center;
     align-items:center;
-    height:100vh;
+    min-height:100vh;
+    overflow:hidden;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .container{
-    background:#fff;
+    background:rgba(255,255,255,0.85);
+    backdrop-filter:blur(10px);
     padding:35px;
-    border-radius:20px;
+    border-radius:25px;
     text-align:center;
-    width:400px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    width:420px;
+    box-shadow:0 15px 35px rgba(0,0,0,.2);
 }
 
 h1{
-    color:#ff4f81;
-    margin-bottom:20px;
-}
-
-p{
-    margin-bottom:20px;
-    font-size:18px;
+    color:#ff69b4;
 }
 
 button{
     padding:12px 25px;
     margin:10px;
     border:none;
-    border-radius:10px;
-    cursor:pointer;
+    border-radius:30px;
     font-size:16px;
-    transition:0.3s;
+    cursor:pointer;
+    transition:.3s;
 }
 
 #yesBtn{
-    background:#4CAF50;
+    background:#ff8fab;
     color:white;
 }
 
 #yesBtn:hover{
-    background:#45a049;
+    transform:scale(1.08);
 }
 
 #noBtn{
-    background:#f44336;
+    background:#8ec5ff;
     color:white;
 }
 
 #noBtn:hover{
-    background:#d32f2f;
-}
-
-.hidden{
-    display:none;
+    transform:scale(1.08);
 }
 
 input{
     padding:10px;
+    border-radius:10px;
+    border:1px solid #ddd;
     margin:10px;
-    border-radius:8px;
-    border:1px solid #ccc;
 }
 
 #confirmBtn{
-    background:#ff4f81;
+    background:#ff69b4;
     color:white;
-}
-
-#result{
-    margin-top:20px;
-    font-weight:bold;
-    color:#ff4f81;
 }
